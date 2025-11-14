@@ -1,0 +1,5 @@
+{"transaction_id":"T001","date":"2024-01-15","product":"Laptop","quantity":2,"price":1200,"region":"North"}
+{"transaction_id":"T002","date":"2024-01-16","product":"Mouse","quantity":5,"price":25,"region":"South"}
+{"transaction_id":"T003","date":"2024-01-17","product":"Keyboard","quantity":3,"price":75,"region":"East"}
+{"transaction_id":"T004","date":"2024-01-18","product":"Monitor","quantity":1,"price":450,"region":"West"}
+{"transaction_id":"T005","date":"2024-01-19","product":"Laptop","quantity":4,"price":1200,"region":"North"}

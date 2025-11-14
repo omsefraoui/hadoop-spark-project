@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <!-- HDFS -->
+    <property>
+        <n>hbase.rootdir</n>
+        <value>hdfs://spark-master:9000/hbase</value>
+    </property>
+    
+    <!-- Cluster -->
+    <property>
+        <n>hbase.cluster.distributed</n>
+        <value>true</value>
+    </property>
+    
+    <!-- Zookeeper -->
+    <property>
+        <n>hbase.zookeeper.quorum</n>
+        <value>spark-master</value>
+    </property>
+    <property>
+        <n>hbase.zookeeper.property.dataDir</n>
+        <value>/opt/hbase/zookeeper</value>
+    </property>
+    
+    <!-- Master -->
+    <property>
+        <n>hbase.master.info.port</n>
+        <value>16010</value>
+    </property>
+    
+    <!-- RegionServer -->
+    <property>
+        <n>hbase.regionserver.info.port</n>
+        <value>16030</value>
+    </property>
+    
+    <!-- Safety -->
+    <property>
+        <n>hbase.unsafe.stream.capability.enforce</n>
+        <value>false</value>
+    </property>
+</configuration>

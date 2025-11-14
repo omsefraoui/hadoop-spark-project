@@ -1,0 +1,60 @@
+# Fichiers Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+README.md
+CHANGELOG.md
+LICENSE
+
+# Fichiers de développement
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Fichiers de logs
+*.log
+logs/
+
+# Fichiers temporaires
+*.tmp
+*.bak
+*.cache
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Fichiers Docker
+.dockerignore
+docker-compose.yml
+docker-compose.*.yml
+
+# Dossiers de build
+target/
+build/
+dist/
+*.egg-info/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node modules (si vous ajoutez du JavaScript)
+node_modules/
+npm-debug.log
+
+# Fichiers volumineux non nécessaires
+*.iso
+*.tar.gz
+*.zip
+*.rar

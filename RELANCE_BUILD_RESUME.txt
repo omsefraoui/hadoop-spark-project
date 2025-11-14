@@ -1,0 +1,194 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║                 🔄 RELANCE DU BUILD - GUIDE RAPIDE                           ║
+║                     Dockerfile v2.0 Optimisé                                 ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+❌ PROBLÈME RENCONTRÉ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Build planté à l'étape [ 4/35 ] :
+  • Téléchargement Hadoop : 749.6 secondes (12.5 minutes)
+  • Cause : Timeout réseau
+
+✅ SOLUTION APPLIQUÉE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Nouveau Dockerfile v2.0 avec :
+
+  ✓ Téléchargements robustes (retry automatique)
+  ✓ Timeouts configurés (15-20 secondes)
+  ✓ Maximum 5 tentatives par fichier
+  ✓ Messages de progression clairs
+  ✓ Optimisation des packages (~40% plus rapide)
+
+⏱️  NOUVEAUX TEMPS ESTIMÉS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Packages système ......... 90s (au lieu de 120s)
+  Python + bibliothèques ... 120s (au lieu de 170s)
+  Hadoop ................... 300-400s (au lieu de 750s) + retry
+  Spark .................... 200-300s (au lieu de 500s) + retry
+  Hive ..................... 150-200s (au lieu de 300s) + retry
+  HBase .................... 120-150s (au lieu de 250s) + retry
+  Configuration ............ 60s
+
+  TOTAL : 20-30 minutes (au lieu de 35-40 minutes)
+
+🚀 MÉTHODE 1 : BUILD MANUEL (Recommandé)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PowerShell :
+
+  cd C:\Users\Minfo\hadoop-spark-project
+
+  # Nettoyer le cache
+  docker builder prune -f
+
+  # Lancer le build
+  docker build -t omsefraoui/hadoop-spark-cluster:latest .
+
+  # Ou avec logs sauvegardés
+  docker build -t omsefraoui/hadoop-spark-cluster:latest . 2>&1 | Tee-Object build.log
+
+⚡ MÉTHODE 2 : BUILD AUTOMATISÉ (Facile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Télécharger et exécuter le script build.ps1 :
+
+  cd C:\Users\Minfo\Downloads
+  .\build.ps1
+
+Le script fait automatiquement :
+  ✓ Vérifications pré-build (Docker, espace, fichiers)
+  ✓ Nettoyage du cache
+  ✓ Build avec logs
+  ✓ Vérification post-build
+  ✓ Propose le test automatique
+
+📊 PROGRESSION À SURVEILLER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Vous verrez ces messages pendant le build :
+
+  [ 1/35] FROM ubuntu:20.04
+  [ 2/35] RUN apt-get update...
+  [ 3/35] RUN pip3 install...
+  [ 4/35] RUN echo "Téléchargement Hadoop..."
+          ✓ Hadoop installé avec succès      ← CRITIQUE
+  [ 5/35] RUN echo "Téléchargement Spark..."
+          ✓ Spark installé avec succès       ← CRITIQUE
+  [ 6/35] RUN echo "Téléchargement Hive..."
+          ✓ Hive installé avec succès        ← CRITIQUE
+  [ 7/35] RUN echo "Téléchargement HBase..."
+          ✓ HBase installé avec succès       ← CRITIQUE
+  ...
+  [35/35] CMD ["/bin/bash"]
+
+Si vous voyez "✓ installé avec succès", tout va bien !
+
+🔧 EN CAS D'ÉCHEC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Vérifier la connexion internet
+   Test-Connection archive.apache.org
+
+2. Relancer le build (Docker reprendra où il s'est arrêté)
+   docker build -t omsefraoui/hadoop-spark-cluster:latest .
+
+3. Si échec répété au même endroit, essayer :
+   • À un autre moment (soir/week-end)
+   • Avec une connexion filaire (pas WiFi)
+   • Augmenter les timeouts dans le Dockerfile
+
+4. Consulter le guide complet :
+   GUIDE_RELANCE_BUILD.md
+
+📚 FICHIERS CRÉÉS POUR VOUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Dans C:\Users\Minfo\hadoop-spark-project\ :
+  ✓ Dockerfile v2.0 (mis à jour avec retry)
+
+Dans outputs/ (à télécharger) :
+  📖 GUIDE_RELANCE_BUILD.md (11 KB) - Guide complet détaillé
+  🛠️ build.ps1 (6 KB) - Script automatisé
+  📄 RELANCE_BUILD_RESUME.txt (ce fichier)
+
+✅ CHECKLIST PRÉ-BUILD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Avant de relancer, vérifiez :
+
+  [ ] Docker Desktop est démarré
+  [ ] Au moins 8 GB RAM alloués à Docker
+  [ ] Au moins 30 GB d'espace disque libre
+  [ ] Connexion internet stable et rapide
+  [ ] 5 scripts Python dans scripts/
+  [ ] 4 fichiers de données dans data/
+  [ ] Configurations dans config/
+
+Vérification rapide :
+  cd C:\Users\Minfo\hadoop-spark-project
+  dir scripts\    # 5 fichiers .py
+  dir data\       # 4 fichiers
+  dir config\     # 4 sous-dossiers
+
+🎯 APRÈS LE BUILD RÉUSSI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Vérifier l'image
+   docker images omsefraoui/hadoop-spark-cluster
+
+2. Test rapide
+   docker run -it --rm omsefraoui/hadoop-spark-cluster:latest hadoop version
+
+3. Test complet
+   docker-compose up -d
+   timeout /t 180
+   # Ouvrir http://localhost:8080
+   docker-compose down
+
+4. Publier
+   docker login
+   docker push omsefraoui/hadoop-spark-cluster:latest
+
+💡 CONSEILS PRATIQUES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ☕ Lancez le build le soir et laissez tourner
+  💻 Fermez les applications gourmandes
+  🔌 Utilisez une connexion filaire
+  🚫 Ne touchez pas à l'ordinateur pendant le build
+  📊 Surveillez les messages "installé avec succès"
+
+📞 SUPPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Problèmes ? Consultez dans l'ordre :
+
+  1. Ce résumé (RELANCE_BUILD_RESUME.txt)
+  2. Guide complet (GUIDE_RELANCE_BUILD.md)
+  3. Logs du build (build.log si généré)
+  4. Guide Dockerfile (DOCKERFILE_GUIDE.md)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎉 VOTRE ACTION IMMÉDIATE
+
+  1. Copier les 4 scripts Python manquants (si pas encore fait)
+  2. Lancer : docker build -t omsefraoui/hadoop-spark-cluster:latest .
+  3. Attendre 20-30 minutes
+  4. Vérifier le succès
+
+Le Dockerfile v2.0 est bien plus robuste !
+Il devrait passer sans problème cette fois. 🚀
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Bon courage !
+
+Date : 10 Novembre 2024
+Auteur : Omar Sefraoui
+Version : 2.0

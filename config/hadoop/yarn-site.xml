@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <n>yarn.resourcemanager.hostname</n>
+        <value>spark-master</value>
+    </property>
+    <property>
+        <n>yarn.nodemanager.aux-services</n>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <n>yarn.resourcemanager.address</n>
+        <value>spark-master:8032</value>
+    </property>
+    <property>
+        <n>yarn.resourcemanager.scheduler.address</n>
+        <value>spark-master:8030</value>
+    </property>
+    <property>
+        <n>yarn.resourcemanager.resource-tracker.address</n>
+        <value>spark-master:8031</value>
+    </property>
+    <property>
+        <n>yarn.resourcemanager.webapp.address</n>
+        <value>spark-master:8088</value>
+    </property>
+    <property>
+        <n>yarn.nodemanager.resource.memory-mb</n>
+        <value>4096</value>
+    </property>
+    <property>
+        <n>yarn.scheduler.maximum-allocation-mb</n>
+        <value>4096</value>
+    </property>
+    <property>
+        <n>yarn.nodemanager.vmem-check-enabled</n>
+        <value>false</value>
+    </property>
+</configuration>

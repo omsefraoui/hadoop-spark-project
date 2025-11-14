@@ -1,0 +1,5 @@
+Apache Spark est un moteur de traitement de données distribué
+Spark permet le traitement en mémoire des données
+Le traitement distribué est la force de Spark
+Spark Spark Spark
+Big Data Apache Hadoop Spark traitement

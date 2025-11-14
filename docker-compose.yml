@@ -1,0 +1,81 @@
+services:
+  spark-master:
+    build: .
+    image: omsefraoui/hadoop-spark-cluster:latest
+    container_name: spark-master
+    hostname: spark-master
+    command: /start-master.sh
+    ports:
+      - "9870:9870"   # HDFS NameNode
+      - "8088:8088"   # YARN ResourceManager
+      - "8080:8080"   # Spark Master Web UI
+      - "7077:7077"   # Spark Master
+      - "4040:4040"   # Spark Application UI
+      - "18080:18080" # Spark History Server
+      - "10000:10000" # HiveServer2
+      - "10002:10002" # Hive Web UI
+      - "16010:16010" # HBase Master
+      - "9083:9083"   # Hive Metastore
+    networks:
+      - spark-network
+    volumes:
+      - spark-master-data:/opt/hadoop/dfs/name
+      - hive-warehouse:/opt/hive/warehouse
+      - spark-logs:/opt/spark/logs
+    environment:
+      - CLUSTER_NAME=spark-cluster
+    stdin_open: true
+    tty: true
+
+  spark-worker1:
+    build: .
+    image: omsefraoui/hadoop-spark-cluster:latest
+    container_name: spark-worker1
+    hostname: spark-worker1
+    command: /start-worker.sh
+    depends_on:
+      - spark-master
+    ports:
+      - "8081:8081"  # Spark Worker 1 UI
+      - "9864:9864"  # DataNode 1
+      - "8042:8042"  # NodeManager 1
+    networks:
+      - spark-network
+    volumes:
+      - spark-worker1-data:/opt/hadoop/dfs/data
+    environment:
+      - CLUSTER_NAME=spark-cluster
+    stdin_open: true
+    tty: true
+
+  spark-worker2:
+    build: .
+    image: omsefraoui/hadoop-spark-cluster:latest
+    container_name: spark-worker2
+    hostname: spark-worker2
+    command: /start-worker.sh
+    depends_on:
+      - spark-master
+    ports:
+      - "8082:8081"  # Spark Worker 2 UI
+      - "9865:9864"  # DataNode 2
+      - "8043:8042"  # NodeManager 2
+    networks:
+      - spark-network
+    volumes:
+      - spark-worker2-data:/opt/hadoop/dfs/data
+    environment:
+      - CLUSTER_NAME=spark-cluster
+    stdin_open: true
+    tty: true
+
+volumes:
+  spark-master-data:
+  spark-worker1-data:
+  spark-worker2-data:
+  hive-warehouse:
+  spark-logs:
+
+networks:
+  spark-network:
+    driver: bridge
