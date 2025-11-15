@@ -20,10 +20,7 @@ docker pull omsefraoui/hadoop-spark-cluster:latest
 
 2. **Démarrer le conteneur :**
 ```bash
-docker run -dit --name bigdata-tp \
-  -p 9870:9870 -p 8088:8088 -p 8080:8080 \
-  -p 18080:18080 -p 16010:16010 -p 10000:10000 \
-  omsefraoui/hadoop-spark-cluster:latest
+docker run -dit --name bigdata-tp  -p 9870:9870 -p 8088:8088 -p 8080:8080  -p 18080:18080 -p 16010:16010 -p 0000:10000   omsefraoui/hadoop-spark-cluster:latest
 ```
 
 3. **Entrer dans le conteneur :**
